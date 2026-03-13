@@ -14,6 +14,23 @@ var score = 0; // variable to keep track of the score
 var started = false; // variable to keep track of whether the game has started
 
 // TODO 4, Part 1: Create the apple variable
+var apple = {};
+
+function makeApple() {
+   // Create a new jQuery div element with the class 'apple'
+  // and append it to the #board
+  apple.element = $('<div>').addClass('apple').appendTo(board);
+
+  // Find a free spot on the grid
+  var randomPosition = getRandomAvailablePosition();
+
+  // Store the row and column on the apple object
+  apple.row = randomPosition.row;
+  apple.column = randomPosition.column;
+
+  // Move the apple to its position on the screen
+  repositionSquare(apple);
+}
 
 
 // TODO 5, Part 1: Create the snake variable
