@@ -15,8 +15,11 @@ var started = false; // variable to keep track of whether the game has started
 
 // TODO 4, Part 1: Create the apple variable
 var apple = {};
-
 function makeApple() {
+  
+
+   repositionSquare(apple);
+   function init() {
    // Create a new jQuery div element with the class 'apple'
   // and append it to the #board
   apple.element = $('<div>').addClass('apple').appendTo(board);
@@ -34,6 +37,7 @@ function makeApple() {
 
 
 // TODO 5, Part 1: Create the snake variable
+const snake = [];
 
 
 // Constant Variables
@@ -65,10 +69,19 @@ init();
 
 function init() {
   // TODO 5, Part 2: initialize the snake
-  
+  function makeSnakeSquare(row, column) {
+const square = document.createElement('div');
+  square.classList.add('snake');
+  repositionSquare(square, row, column);
+  if (snake.body.length === 0) {
+    square.id = 'snake-head';
+  }
+  snake.body.push(square);
+  snake.tail = square;
   
   // TODO 4, Part 3: initialize the apple
-
+ apple.row = randomPosition.row;
+  apple.column = randomPosition.column;
 
   // TODO 6, Part 1: Initialize the interval
 
@@ -224,7 +237,8 @@ function endGame() {
  */
 function makeApple() {
   // TODO 4, Part 2: Fill in this function's code block
-
+apple.element = $('<div>').addClass('apple').appendTo('#board');
+    var randomPosition = getRandomAvailablePosition();
 
 
 }
