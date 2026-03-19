@@ -20,18 +20,13 @@ function makeApple() {
 
    repositionSquare(apple);
    function init() {
-   // Create a new jQuery div element with the class 'apple'
-  // and append it to the #board
   apple.element = $('<div>').addClass('apple').appendTo(board);
-
-  // Find a free spot on the grid
+  
   var randomPosition = getRandomAvailablePosition();
 
-  // Store the row and column on the apple object
   apple.row = randomPosition.row;
   apple.column = randomPosition.column;
 
-  // Move the apple to its position on the screen
   repositionSquare(apple);
 }
 
@@ -84,7 +79,7 @@ const square = document.createElement('div');
   apple.column = randomPosition.column;
 
   // TODO 6, Part 1: Initialize the interval
-
+updateInterval = setInterval(update, 100);
 
 }
 
@@ -98,16 +93,34 @@ const square = document.createElement('div');
  */
 function update() {
   // TODO 6, Part 2: Fill in the update function's code block
+if (started) {
+  moveSnake();
+}
 
+if (hasHitWall() || hasCollidedWithSnake()) {
+  endGame();
+}
 
+if (hasCollidedWithApple()) {
+  handleAppleCollision();
+}
+("updating...");
 
 
 }
 
 function checkForNewDirection(event) {
+  else if (activeKey === KEY.RIGHT) {
+  snake.head.direction = "right";
+} else if (activeKey === KEY.UP) {
+  snake.head.direction = "up";
+} else if (activeKey === KEY.DOWN) {
+  snake.head.direction = "down";
+}
+ 
   /* 
   TODO 7: Update snake.head.direction based on the value of activeKey.
-  
+
   BONUS: Only allow direction changes to take place if the new direction is
   perpendicular to the current direction
   */
@@ -144,7 +157,23 @@ function moveSnake() {
     HINT: The snake's head will need to move forward 1 square based on the value
     of snake.head.direction which may be one of "left", "right", "up", or "down"
   */
-
+if (snake.head.direction === "left") {
+  snake.head.column = snake.head.column - 1;
+}
+if (direction === "left") {
+    snake.head.column -= 1;
+} else if (direction === "right") {
+    snake.head.column += 1;
+} else if (direction === "up") {
+    snake.head.row -= 1;
+} else if (direction === "down") {
+    snake.head.row += 1;
+}
+function moveBodyAToBodyB(bodyA, bodyB) {
+  bodyA.row = bodyB.row;
+  bodyA.column = bodyB.column;
+  bodyA.direction = bodyB.direction;
+}
 
 
 
@@ -249,7 +278,11 @@ apple.element = $('<div>').addClass('apple').appendTo('#board');
  */
 function makeSnakeSquare(row, column) {
   // TODO 5, Part 2: Fill in this function's code block
-
+snake.body = [];
+makeSnakeSquare(10, 10);
+makeSnakeSquare(10, 9);
+makeSnakeSquare(10, 8);
+snake.head = snake.body[0];
 
 
 
@@ -268,7 +301,8 @@ function makeSnakeSquare(row, column) {
 */
 function handleKeyDown(event) {
   // TODO 7: make the handleKeyDown function register which key is pressed
-
+activeKey = event.which;
+console.log(activeKey);
 
   // If a valid direction key is pressed, start the game
   if (
