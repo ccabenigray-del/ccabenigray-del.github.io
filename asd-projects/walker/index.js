@@ -45,7 +45,10 @@ function runProgram(){
   Note: You can have multiple event handlers for different types of events.
   */
   function handleKeyDown(event) {
-console.log(event.keydown)
+  if (event.which === KEY.LEFT) {
+    console.log("left pressed");
+  }
+    console.log(event.keydown)
   }
 
   ////////////////////////////////////////////////////////////////////////////////
