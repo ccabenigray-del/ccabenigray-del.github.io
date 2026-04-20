@@ -65,3 +65,10 @@ function runProgram(){
   }
   
 }
+function repositionGameItem() {
+  walker.x += walker.speedX;
+  walker.y += walker.speedY;
+}
+function newFrame() {
+  repositionGameItem(); 
+}
