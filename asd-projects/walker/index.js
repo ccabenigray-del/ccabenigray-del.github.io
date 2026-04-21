@@ -50,6 +50,17 @@ function runProgram(){
   }
     console.log(event.keydown)
   }
+  if (event.key === "ArrowLeft") {
+    walker.speedX = -5; // Move left
+  } else if (event.key === "ArrowRight") {
+    walker.speedX = 5;  // Move right
+  } else if (event.key === "ArrowUp") {
+    walker.speedY = -5; // Move up
+  } else if (event.key === "ArrowDown") {
+    walker.speedY = 5;  // Move down
+  }
+}
+
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -64,11 +75,21 @@ function runProgram(){
     $(document).off();
   }
   
-}
 function repositionGameItem() {
   walker.x += walker.speedX;
   walker.y += walker.speedY;
 }
 function newFrame() {
   repositionGameItem(); 
+}
+function redrawGameItem() {
+  $("#walker").css({
+    "left": walker.x,
+    "top": walker.y
+  });
+}
+
+function newFrame() {
+  repositionGameItem();
+  redrawGameItem();
 }
