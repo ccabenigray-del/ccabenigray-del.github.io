@@ -51,13 +51,13 @@ function runProgram(){
     console.log(event.keydown)
   }
   if (event.key === "ArrowLeft") {
-    walker.speedX = -5; // Move left
+    walker.speedX = -5; 
   } else if (event.key === "ArrowRight") {
-    walker.speedX = 5;  // Move right
+    walker.speedX = 5;  
   } else if (event.key === "ArrowUp") {
-    walker.speedY = -5; // Move up
+    walker.speedY = -5; 
   } else if (event.key === "ArrowDown") {
-    walker.speedY = 5;  // Move down
+    walker.speedY = 5;  
   }
 }
 
@@ -92,4 +92,19 @@ function redrawGameItem() {
 function newFrame() {
   repositionGameItem();
   redrawGameItem();
+}
+
+function wallCollision() {
+    if (walker.x < 0) {
+        walker.x -= walker.speedX;
+    }
+    if (walker.x > $("#board").width()) {
+        walker.x -= walker.speedX;
+    }
+    if (walker.y < 0) {
+        walker.y -= walker.speedY;
+    }
+    if (walker.y > $("#board").height()) {
+        walker.y -= walker.speedY;
+    }
 }
