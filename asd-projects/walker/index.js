@@ -50,13 +50,13 @@ function runProgram(){
   }
     console.log(event.keydown)
   }
-  if (event.key === "ArrowLeft") {
+  if (keydown === "ArrowLeft") {
     walker.speedX = -5; 
-  } else if (event.key === "ArrowRight") {
+  } else if (keydown === "ArrowRight") {
     walker.speedX = 5;  
-  } else if (event.key === "ArrowUp") {
+  } else if (keydown === "ArrowUp") {
     walker.speedY = -5; 
-  } else if (event.key === "ArrowDown") {
+  } else if (keydown === "ArrowDown") {
     walker.speedY = 5;  
   }
 }
