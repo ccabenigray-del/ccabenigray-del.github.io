@@ -46,8 +46,15 @@ var pixelArray = rgbStringArray(pixel);
 var updatedPixel = rgbArrayToString(pixelArray);
 image[i][j] = updatedPixel;
 
-// TODO 9 Create the applyFilterNoBackground function
+function reddify(pixel) {
+  pixel[0] = 255;
+}
+var testArray = [100, 100, 100];
+reddify(testArray);
+console.log(testArray); // Should show [200, 100, 100]
 
+// TODO 9 Create the applyFilterNoBackground function
+finished todo 4
 
 // TODO 6: Create the keepInBounds function
 
