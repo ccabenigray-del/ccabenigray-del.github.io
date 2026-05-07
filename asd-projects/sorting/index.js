@@ -41,8 +41,24 @@ if (index < right) {
 }
 
 // TODOs 4 & 5: Implement partition
-
-
+async function partition(array, left, right) {
+var pivot = array[Math.floor((right + left) / 2)].value;
+while (left < right) {
+    // empty lol...
+}
+return left + 1;
+}
+while (array[left].value < pivotValue) {
+    left++;
+}
+while (array[right].value > pivotValue) {
+    right--;
+}
+if (left < right) {
+    swap(array, left, right);
+    updateCounter(quickCounter);
+    await sleep();
+}
 // TODO 1: Implement swap
 var swap = function(array, i, j) {
     var temp = array[i];
@@ -50,7 +66,7 @@ var swap = function(array, i, j) {
     array[j] = temp;
     drawSwap(array, i, j);
 }
-// finished Todo 3
+// finished Todo 5
 ///////////////////////////////////////////////////////////////////////
 /////////////////////// YOUR WORK GOES ABOVE HERE /////////////////////
 ///////////////////////////////////////////////////////////////////////
