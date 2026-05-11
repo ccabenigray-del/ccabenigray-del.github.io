@@ -48,7 +48,6 @@ while (left < right) {
         left++;
     }
     while (array[right].value > pivotValue) {
-
     }
 }
 return left + 1;

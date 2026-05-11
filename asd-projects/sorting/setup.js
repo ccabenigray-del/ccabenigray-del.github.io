@@ -9,7 +9,7 @@
 const SLEEP_AMOUNT = 50;
 
 // set the max number of squares
-const MAX_SQUARES = 250;
+const MAX_SQUARES = 150;
 
 // set constants for pseudo-random number generation
 const SEED = 2;
